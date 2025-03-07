@@ -1,0 +1,62 @@
+<p>ticketdetail works!</p>
+<div class="ticket-details-container">
+    <h2>Ticket Details</h2>
+  
+    <div *ngIf="ticketdetails">
+      <!-- Ticket ID -->
+      <div class="ticket-item">
+        <label for="ticketId">Ticket ID:</label>
+        <span id="ticketId">{{ ticketdetails.id }}</span>
+      </div>
+  <!-- Ticket Title -->
+  <div class="ticket-item">
+    <label for="ticketTitle">Title:</label>
+    <span id="ticketTitle">{{ ticketdetails.title }}</span>
+  </div>
+
+  <!-- Ticket Description -->
+  <div class="ticket-item">
+    <label for="ticketDescription">Description:</label>
+    <span id="ticketDescription">{{ ticketdetails.description }}</span>
+  </div>
+
+   <!-- Created By -->
+   <div class="ticket-item">
+    <label for="createdBy">Created By:</label>
+    <span id="createdBy">{{ ticketdetails.createdby }}</span>
+  </div>
+
+  <!-- Resolved By -->
+  <div class="ticket-item">
+    <label for="resolvedBy">Resolved By:</label>
+    <span id="resolvedBy">{{ ticketdetails.resolvedby || 'Not resolved' }}</span>
+  </div>
+
+  <!-- Ticket Status -->
+  <div class="ticket-item">
+    <label for="ticketStatus">Status:</label>
+    <span id="ticketStatus">{{ ticketdetails.status }}</span>
+  </div>
+   <!-- Ticket Resolution -->
+   <div class="ticket-item">
+    <label for="ticketResolution">Resolution:</label>
+    <span id="ticketResolution">{{ ticketdetails.resolution || 'Not resolved yet' }}</span>
+  </div>
+
+  <!-- Created Time (formatted) -->
+  <div class="ticket-item">
+    <label for="createdTime">Created Time:</label>
+    <span id="createdTime">{{ ticketdetails.createdtime | date: 'dd/MM/yyyy hh:mm a' }}</span> <!-- Format DateTime -->
+  </div>
+   <!-- Resolved Time (formatted) -->
+   <div class="ticket-item">
+    <label for="createdTime">Resolved Time:</label>
+    <span id="createdTime">{{ ticketdetails.resolvedtime | date: 'dd/MM/yyyy hh:mm a' }}</span> <!-- Format DateTime -->
+  </div>
+</div>
+
+<!-- Fallback message when ticket details are not available -->
+<div *ngIf="!ticketdetails">
+  <p>Problem Loading ticket details...</p>
+</div>
+</div>

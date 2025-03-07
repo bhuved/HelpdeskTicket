@@ -1,0 +1,32 @@
+<div class="ticket-list">
+    <h2>Ticket List</h2>
+    <table class="ticket-table">
+        <thead>
+            <tr>
+                <th>TicketId</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>CreatedBy Name</th>
+                <th>ResolvedBy Name</th>
+                <th>Resolution</th>
+                <th>Createdtime</th>
+                <th>Resolvedtime</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tickets of ticketList">
+                <td><a [routerLink]="['/tickets',tickets.id]">{{tickets.id}}</a></td>
+                <td>{{tickets.title}}</td>
+                <td>{{tickets.description}}</td>
+                <td>{{tickets.status}}</td>
+                <td>{{tickets.createdby}}</td>
+                <td>{{tickets.resolvedby }}</td>
+                <td>{{tickets.resolution}}</td>
+                <td>{{tickets.createdtime | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                <td>{{tickets.resolvedtime | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                <td><button>Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

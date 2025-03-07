@@ -1,0 +1,33 @@
+<p>createticket works!</p>
+<div class="create-ticket-container">
+    <h2>Create New Ticket</h2>
+    
+    <form (ngSubmit)="callCreateTicket()" #ticketForm="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" [(ngModel)]="newTicket.title" required class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" [(ngModel)]="newTicket.description" required class="form-control"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="userid">UserId</label>
+        <input type="text" id="userid" name="userid" [(ngModel)]="newTicket.createdbyUserId" required class="form-control" />
+      </div>
+
+      <button type="submit" [disabled]="ticketForm.invalid || loading" class="btn btn-primary">
+        {{ loading ? 'Creating...' : 'Create Ticket' }}
+      </button>
+  
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      {{ successMessage }}
+    </div>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+.ticket-details-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .ticket-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .ticket-item label {
+    font-weight: bold;
+  }
+  
+  .ticket-item span {
+    color: #333;
+  }
+  .ticket-item span,
+.ticket-item label {
+  font-size: 16px;
+}
+
+.ticket-item label {
+  width: 15%;
+}
+
+.ticket-item span {
+  width: 75%;
+  text-align: left;
+}
