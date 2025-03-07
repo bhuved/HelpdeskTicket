@@ -33,8 +33,7 @@ isValid:boolean = false;
     this.ticketService.validateUserid(this.newTicket.createdbyUserId).subscribe({
       next: (data: any) => {
         console.log(data);
-         this.isValid = data; 
-             
+         this.isValid = data;              
       },
       error: (error) => {
         console.error("Error fetching data : ", error);

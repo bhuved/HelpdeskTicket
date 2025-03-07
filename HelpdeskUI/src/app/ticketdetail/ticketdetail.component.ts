@@ -12,6 +12,7 @@ import { Ticketmodel } from '../model/ticketmodel';
 export class TicketdetailComponent implements OnInit{
 
    ticketId: string | null = '';
+   checkUserId: number = 0;
    ticketdetails : Ticketmodel = {
      id: 0,
      title: '',
@@ -46,6 +47,10 @@ export class TicketdetailComponent implements OnInit{
       }
     })
   }
-
+checkValidity(): void{
+  if (this.checkUserId === null || this.checkUserId === 0){
+    
+  }
+}
 
 }

@@ -9,6 +9,7 @@ import { TicketdetailComponent } from './ticketdetail/ticketdetail.component';
 import { CreateticketComponent } from './createticket/createticket.component';
 import { EditticketComponent } from './editticket/editticket.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { BookmarklistComponent } from './bookmarklist/bookmarklist.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     TicketlistComponent,
     TicketdetailComponent,
     CreateticketComponent,
-    EditticketComponent
+    EditticketComponent,
+    BookmarklistComponent
   ],
   imports: [
     BrowserModule,

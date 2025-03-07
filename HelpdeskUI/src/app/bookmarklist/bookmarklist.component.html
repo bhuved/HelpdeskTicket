@@ -1,0 +1,35 @@
+<p>bookmarklist works!</p>
+<div class="ticket-list">
+    <table class="ticket">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TicketId</th>
+                <th>Bookmarked UserName</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>CreatedBy</th>
+                <th>ResolvedBy</th>
+                <th>Status</th>
+                <th>Resolution</th>
+                <th>Createdtime</th>
+                <th>Resolvedtime</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bookmark of bookmarkList">
+                <td>{{bookmark.id}}</td>
+                <td>{{bookmark.ticketId}}</td>
+                <td>{{bookmark.userName}}</td>
+                <td>{{bookmark.title}}</td>
+                <td>{{bookmark.description}}</td>
+                <td>{{bookmark.createdby}}</td>
+                <td>{{bookmark.resolvedby}}</td>
+                <td>{{bookmark.status}}</td>
+                <td>{{bookmark.resolution}}</td>
+                <td>{{bookmark.createdtime}}</td>
+                <td>{{bookmark.resolvedtime}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -42,6 +42,7 @@ namespace HelpdeskAPI.Controllers
                 Title = b.Ticket.Title,
                 Description = b.Ticket.Description,
                 Status = b.Ticket.Status,
+                Resolution = b.Ticket.Resolution,
                 // Handle null for CreatedbyUser and ResolvedbyUser safely.
                 Createdby = b.Ticket.CreatedbyUser != null ? b.Ticket.CreatedbyUser.FirstName + " " + b.Ticket.CreatedbyUser.LastName : "Unknown",
                 Resolvedby = b.Ticket.ResolvedbyUser != null ? b.Ticket.ResolvedbyUser.FirstName + " " + b.Ticket.ResolvedbyUser.LastName : "Not Resolved",
