@@ -61,11 +61,12 @@
 </div>
 
 </div>
-<div class="input-container">
+<div class="input-container" >
   <label>Enter UserId to add/remove Bookmark</label><br>
-  <label>User Id</label><input type = number id="userid" [(ngModel)]="checkUserId" #num="ngModel">
-  <div *ngIf="num.invalid && num.touched" class="error-message">Please Enter a number</div>
-  <button [disabled]="num.invalid && num.touched" (click)="checkValidity()">Enter</button>
+  <label>User Id</label><input type = number id="userid" [(ngModel)]="checkUserId">
+  <button (click)="checkValidity()">Enter</button>
+  
+  <div *ngIf="message" class="error-message">{{message}}</div>
 </div>
 
-
+ 

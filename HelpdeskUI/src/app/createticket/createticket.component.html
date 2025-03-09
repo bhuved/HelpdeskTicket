@@ -1,33 +1,36 @@
 <p>createticket works!</p>
+<div class="maindiv">
 <div class="create-ticket-container">
     <h2>Create New Ticket</h2>
     
     <form (ngSubmit)="callCreateTicket()" #ticketForm="ngForm">
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" [(ngModel)]="newTicket.title" required class="form-control" />
+        <input type="text" id="title" name="title" [(ngModel)]="newTicket.title" required/>
       </div>
 
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea id="description" name="description" [(ngModel)]="newTicket.description" required class="form-control"></textarea>
+        <textarea id="description" name="description" [(ngModel)]="newTicket.description" required></textarea>
       </div>
 
       <div class="form-group">
         <label for="userid">UserId</label>
-        <input type="text" id="userid" name="userid" [(ngModel)]="newTicket.createdbyUserId" required class="form-control" />
+        <input type="text" id="userid" name="userid" [(ngModel)]="newTicket.createdbyUserId" required />
       </div>
 
-      <button type="submit" [disabled]="ticketForm.invalid || loading" class="btn btn-primary">
-        {{ loading ? 'Creating...' : 'Create Ticket' }}
+      <button type="submit" [disabled]="ticketForm.invalid">
+        Create Ticket
       </button>
+      <button (click)="clearInput()">Cancel</button>
   
-    <div *ngIf="successMessage" class="alert alert-success mt-3">
+    <div *ngIf="successMessage">
       {{ successMessage }}
     </div>
   
-    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    <div *ngIf="errorMessage">
       {{ errorMessage }}
     </div>
     </form>
+</div>
 </div>

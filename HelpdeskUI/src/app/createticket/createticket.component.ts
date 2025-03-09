@@ -11,29 +11,27 @@ import { EMPTY } from 'rxjs';
   styleUrl: './createticket.component.css'
 })
 export class CreateticketComponent implements OnInit {
-newTicket: Createticketmodel = {title:'',  description:'',  createdbyUserId : 0}
-loading :boolean = false;
-successMessage: string ='';
-errorMessage: string = '';
-isValid:boolean = false;
+  newTicket: Createticketmodel = { title: '', description: '', createdbyUserId: 0 }
+  successMessage: string = '';
+  errorMessage: string = '';
+  isValid: boolean = false;
 
-  constructor(private ticketService: TicketService){}
+  constructor(private ticketService: TicketService) { }
   ngOnInit(): void {
 
   }
-  callCreateTicket(): void{
-    this.loading = true;
-    this.successMessage ='';
+
+  callCreateTicket(): void {
+    this.successMessage = '';
     this.errorMessage = '';
 
-    if (this.newTicket.createdbyUserId == null)
-    {
-      this.errorMessage = "Enter userId"
+    if (this.newTicket.createdbyUserId == null) {
+      this.errorMessage = "Enter UserId"
     }
     this.ticketService.validateUserid(this.newTicket.createdbyUserId).subscribe({
       next: (data: any) => {
         console.log(data);
-         this.isValid = data;              
+        this.isValid = data;
       },
       error: (error) => {
         console.error("Error fetching data : ", error);
@@ -42,28 +40,38 @@ isValid:boolean = false;
         console.log("Data fetching complete");
       }
     })
-    if (this.isValid == false)
-    {
-      this.errorMessage = "Enter Valid UserId"
+    if (this.isValid == false) {
+      this.errorMessage = "UserId not exist."
     }
-    else
-    {
+    else {
       this.errorMessage = '';
-    }
-    this.ticketService.createTicket(this.newTicket).subscribe({
-           next: (response) => {
-            this.loading = false;
+
+      this.ticketService.createTicket(this.newTicket).subscribe({
+        next: (response) => {
           console.log('Record added successfully', response);
-          this.successMessage ="Record added successfully"
-          // Optionally, handle success, like resetting the form or showing a success message
+          this.resetForm();
+          this.successMessage = "Ticket created successfully"
         },
         error: (error) => {
-          this.loading = false;
           console.error('Error adding record', error);
+          this.successMessage='';
           this.errorMessage = "Error adding record";
-          // Optionally, handle error, like showing an error message
+          this.successMessage='';
         }
-    });
+      });
+     
+    } 
+    setTimeout(() => {this.successMessage=''; this.errorMessage='';},3000);
+  }
+  clearInput() : void{
+    this.resetForm();
+  }
+  resetForm():void{
+    this.errorMessage='';
+    this.successMessage = '';
+    this.newTicket.createdbyUserId=0;
+    this.newTicket.description='';
+    this.newTicket.title='';
   }
 
 }

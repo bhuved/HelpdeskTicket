@@ -67,6 +67,18 @@ namespace HelpdeskAPI.Controllers
 
             return bookmark;
         }
+        [HttpGet("checkbookmark/{ticketId}/{userId}")]
+        public async Task<ActionResult<Boolean>>GetBookmark(int ticketId, int userId)
+        {
+            var bookmark = await _context.Bookmarks
+                .FirstOrDefaultAsync(b => b.TicketId == ticketId && b.UserId == userId);
+
+            if (bookmark == null)
+            {
+                return Ok(false);
+            }
+            return Ok(true);
+        }
 
         // PUT: api/Bookmarks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -102,12 +114,22 @@ namespace HelpdeskAPI.Controllers
         // POST: api/Bookmarks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Bookmark>> PostBookmark(Bookmark bookmark)
+        public async Task<ActionResult<Bookmark>> PostBookmark(CreateBookmarkDTO createBookmarkDTO)
         {
-            _context.Bookmarks.Add(bookmark);
+            if(createBookmarkDTO == null)
+            {
+                return BadRequest("Invalid data");
+            }
+            var newBookmark = new Bookmark
+            {
+                TicketId = createBookmarkDTO.TicketId,
+                UserId = createBookmarkDTO.UserId
+            };
+
+            _context.Bookmarks.Add(newBookmark);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBookmark", new { id = bookmark.Id }, bookmark);
+            return CreatedAtAction("GetBookmark", new { id = newBookmark.Id }, newBookmark);
         }
 
         // DELETE: api/Bookmarks/5
@@ -124,6 +146,23 @@ namespace HelpdeskAPI.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+        [HttpDelete("removebookmark/{ticketId}/{userId}")]
+        public async Task<ActionResult<Boolean>>RemoveBookmark(int ticketId, int userId)
+        {
+            // Find the bookmark to remove
+            var bookmark = await _context.Bookmarks
+                .FirstOrDefaultAsync(b => b.TicketId == ticketId && b.UserId == userId);
+
+            if (bookmark == null)
+            {
+                return Ok(false);
+            }
+
+            _context.Bookmarks.Remove(bookmark);
+            await _context.SaveChangesAsync();
+
+            return Ok(true);
         }
 
         private bool BookmarkExists(int id)

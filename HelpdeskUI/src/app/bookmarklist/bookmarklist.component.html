@@ -1,6 +1,11 @@
 <p>bookmarklist works!</p>
+<div class="ticket-item">
+    <label for="filterby">Filter by UserId</label>
+    <input  type="number" id="userid" name="userid" [(ngModel)]="checkUserId" /><button (click)="validateUser()">Search</button>
+    <label *ngIf="errorMessage">{{ errorMessage }}</label>
+</div>
 <div class="ticket-list">
-    <table class="ticket">
+    <table class="ticket-table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -17,10 +22,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let bookmark of bookmarkList">
+            <tr *ngFor="let bookmark of filteredBookmarkList">
                 <td>{{bookmark.id}}</td>
                 <td>{{bookmark.ticketId}}</td>
-                <td>{{bookmark.userName}}</td>
+                <td>{{bookmark.userId}}{{bookmark.userName}}</td>
                 <td>{{bookmark.title}}</td>
                 <td>{{bookmark.description}}</td>
                 <td>{{bookmark.createdby}}</td>

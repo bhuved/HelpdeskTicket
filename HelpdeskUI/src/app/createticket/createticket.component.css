@@ -7,13 +7,27 @@
     border-radius: 8px;
     background-color: #f9f9f9;
   }
+  .maindiv{
+    width: 50%;
+    height: 100%;
+    padding: 80px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #929189ad;
+  }
   
   .form-group {
     margin-bottom: 15px;
   }
-  
+  .form-group label{
+    font-weight: bold;
+  }
+  h2{
+    text-align: center;
+  }
   button {
-    width: 100%;
+    width: 50%;
+    padding-right: 10px;
   }
   
   .alert {

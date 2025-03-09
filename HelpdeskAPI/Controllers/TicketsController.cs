@@ -142,10 +142,10 @@ namespace HelpdeskAPI.Controllers
 
             if (user == null)
             {
-                return NotFound(false); // User not found
+                return Ok("false"); // User not found
             }
 
-            return Ok(true); // User found
+            return Ok("true"); // User found
         }
         // DELETE: api/Tickets/5
         [HttpDelete("{id}")]

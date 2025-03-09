@@ -2,7 +2,15 @@
     margin: 20px;
     padding: 10px;
   }
-  
+  .ticket-item {
+    display: inline;
+    margin: 20px;
+    padding: 5px;
+  }
+  .ticket-item label {
+    padding-right: 20px;
+    font-weight: bold;
+  }
   .ticket-list h2 {
     font-size: 24px;
     margin-bottom: 10px;

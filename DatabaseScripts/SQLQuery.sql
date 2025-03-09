@@ -61,3 +61,7 @@ values (1, 2),  -- User 2 bookmarked Ticket 1
 (5, 2);  -- User 2 bookmarked Ticket 5
 
 select * from bookmark;
+
+select *, ticket.title,ticket.CreatedbyUserId, Users.Email from bookmark inner join ticket on bookmark.TicketId =Ticket.Id
+inner join Users on bookmark.UserId = Users.Id order by Users.FirstName;
+truncate table Bookmark;
