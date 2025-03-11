@@ -65,6 +65,7 @@ namespace HelpdeskAPI.Controllers
                 Title = ticket.Title,
                 Description = ticket.Description,
                 CreatedbyUserId = ticket.CreatedbyUserId,
+               ResolvedbyUserId = ticket.ResolvedbyUserId,
                 Createdby = ticket.CreatedbyUser.FirstName + ticket.CreatedbyUser.LastName,
                 Resolvedby = ticket.ResolvedbyUser != null ? ticket.ResolvedbyUser.FirstName + " " + ticket.ResolvedbyUser.LastName : null,
                 Status = ticket.Status,

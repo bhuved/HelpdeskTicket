@@ -1,0 +1,24 @@
+<p>createuser works!</p>
+<div class="maindiv">
+    <h2>Create New User</h2>
+    <div class="create-user-container">
+        <form (ngSubmit)="createUser()" #userForm="ngForm">
+            <div class="form-group">
+                <div class="label"><label for="firstname" >First Name</label></div>
+                <input type="text" id="firstname" name="firstname" [(ngModel)]="user.Firstname" required/>
+            </div>
+            <div class="form-group">
+                <div class="label"><label for="lastname">Last Name</label></div>
+                <input type="text" id="lastname" name="lastname" [(ngModel)]="user.Lastname" required/>
+            </div>
+            <div class="form-group">
+                <div class="label"><label for="email">Email</label></div>
+                <input type="text" id="email" name="email" [(ngModel)]="user.Email" required/>
+            </div>
+            <div><button [disabled]="userForm.invalid">Submit</button></div>
+            <div *ngIf="message">{{this.message}}</div>
+        </form>
+    </div>
+</div>
+
+    

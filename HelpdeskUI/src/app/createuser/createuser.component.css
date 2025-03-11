@@ -1,6 +1,6 @@
-.create-ticket-container {
-    width: 100%;
-    max-width: 600px;
+.create-user-container {
+    max-width:600px;
+    height:70%;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ddd;
@@ -8,40 +8,30 @@
     background-color: #f9f9f9;
   }
   .maindiv{
-    width: 50%;
+    width: 80%;
     height: 100%;
-    padding: 80px;
+    padding: 20px;
+    padding-bottom:60px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #929189ad;
   }
   
   .form-group {
-    display: flex;
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
   }
-  .form-group label{
+  .label{
     font-weight: bold;
-    width: 15%
+    margin-bottom: 5px;
+    padding-right:10px;
+    width: 15%;
   }
-
-  .form-group input{
-    font-weight: bold;
-    width: 30%
-  }
-  .form-group textarea{
-    font-weight: bold;
-    width: 50%
-  }
-
   h2{
     text-align: center;
   }
   button {
     width: 50%;
     padding-right: 10px;
-  }
-  
-  .alert {
-    margin-top: 15px;
   }

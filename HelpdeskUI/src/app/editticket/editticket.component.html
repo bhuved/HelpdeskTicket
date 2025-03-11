@@ -1,1 +1,70 @@
 <p>editticket works!</p>
+<div class="ticket-details-container">
+    <h2>Ticket Details</h2>
+  
+    <div *ngIf="ticketdetails">
+        <form (ngSubmit)="callUpdateTicket()" #ticketForm="ngForm">
+      <!-- Ticket ID -->
+      <div class="ticket-item">
+        <label for="ticketId">Ticket ID:</label>
+        <span id="ticketId">{{ ticketdetails.id }}</span>
+      </div>
+      
+   <!-- Created By -->
+   <div class="ticket-item">
+    <label for="createdBy">Created By:</label>
+    <span id="createdBy">{{ ticketdetails.createdby }}</span>
+  </div>
+  <div class="ticket-item">
+    <label for="createdTime">Created Time:</label>
+    <span id="createdTime">{{ ticketdetails.createdtime | date: 'dd/MM/yyyy hh:mm a' }}</span> <!-- Format DateTime -->
+  </div>
+
+  <!-- Ticket Title -->
+  <div class="ticket-item">
+    <label for="ticketTitle">Title:</label>
+    <input type="text" name="title" [(ngModel)]="ticketdetails.title" required>
+  </div>
+
+  <!-- Ticket Description -->
+  <div class="ticket-item">
+    <label for="ticketDescription">Description:</label>
+    <textarea id="ticketDescription" name="description" [(ngModel)]="ticketdetails.description" required></textarea>
+  </div>
+
+  
+  <!-- Ticket Status -->
+  <div class="ticket-item">
+    <label for="ticketStatus">Status:</label>
+    <select id="ticketStatus" name="status" [(ngModel)]="ticketdetails.status">
+        <option>Open</option>
+        <option>Closed</option>
+    </select>
+  </div>
+
+  <!-- Resolved By -->
+  <div class="ticket-item">
+    <label for="resolvedBy">Resolved By:</label>
+    <input type="number" name="resolvedby" [(ngModel)]="ticketdetails.resolvedbyUserId" [required]="ticketdetails.status === 'Closed'"
+    placeholder="Required when status closed">
+  </div>
+
+   <!-- Ticket Resolution -->
+   <div class="ticket-item">
+    <label for="ticketResolution">Resolution:</label>
+    <textarea id="ticketResolution" name="resolution" [(ngModel)]="ticketdetails.resolution" [required]="ticketdetails.status === 'Closed'"
+    placeholder="Required when status closed"></textarea>
+  </div>
+
+  <button [disabled]="ticketForm.invalid">
+    Update Ticket
+  </button>
+  <button (click)="resetInput()">Cancel</button>
+  
+  <div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>
+<div *ngIf="successMessage" class="success-message">{{successMessage}}</div>
+
+</form>
+</div>
+
+

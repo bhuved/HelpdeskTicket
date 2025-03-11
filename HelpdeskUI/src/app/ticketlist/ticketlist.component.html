@@ -1,5 +1,11 @@
 <div class="ticket-list">
     <h2>Ticket List</h2>
+    <label style="font-weight: bold;">Filter By Status </label>
+    <select name="checkstatus" [(ngModel)]="checkStatus" (ngModelChange)="filterTicketsbyStatus()">
+        <option>All</option>
+        <option>Open</option>
+        <option>Closed</option>
+    </select>
     <table class="ticket-table">
         <thead>
             <tr>
@@ -15,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let tickets of ticketList">
+            <tr *ngFor="let tickets of FilteredTicketList">
                 <td><a [routerLink]="['/tickets',tickets.id]">{{tickets.id}}</a></td>
                 <td>{{tickets.title}}</td>
                 <td>{{tickets.description}}</td>
@@ -25,7 +31,7 @@
                 <td>{{tickets.resolution}}</td>
                 <td>{{tickets.createdtime | date: 'dd/MM/yyyy hh:mm a'}}</td>
                 <td>{{tickets.resolvedtime | date: 'dd/MM/yyyy hh:mm a'}}</td>
-                <td><button>Edit</button></td>
+                <td><button><a [routerLink]="['/editticket',tickets.id]">Edit</a></button></td>
             </tr>
         </tbody>
     </table>

@@ -5,13 +5,15 @@ import { TicketdetailComponent } from './ticketdetail/ticketdetail.component';
 import { CreateticketComponent } from './createticket/createticket.component';
 import { EditticketComponent } from './editticket/editticket.component';
 import { BookmarklistComponent } from './bookmarklist/bookmarklist.component';
+import { CreateuserComponent } from './createuser/createuser.component';
 
 const routes: Routes = [
   {path: 'tickets', component: TicketlistComponent},
   {path: 'tickets/:id', component: TicketdetailComponent},
   {path: 'createticket', component: CreateticketComponent},
-  {path: 'updateticket/:id', component: EditticketComponent},
+  {path: 'editticket/:id', component: EditticketComponent},
   {path: 'bookmarks', component: BookmarklistComponent},
+  {path: 'users', component: CreateuserComponent},
   {path: '', redirectTo: '/tickets', pathMatch: 'full'}
 
 ];

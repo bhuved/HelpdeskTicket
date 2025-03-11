@@ -20,3 +20,11 @@ nav {
   nav a.active {
     color: blue;
   }
+  h1{
+    text-align: center;
+  }
+  .header{
+    background-color: rgb(247, 166, 247);
+    padding-top:20px;
+    padding-bottom: 10px;
+  }

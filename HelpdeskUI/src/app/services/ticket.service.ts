@@ -16,7 +16,7 @@ export class TicketService {
     return this.http.get(this.URL);
   }
 
-  getTicketdetailsId(id: string | null){
+  getTicketdetailsId(id: number | null){
     return this.http.get(`${this.URL}/${id}`);
   }
 
@@ -26,5 +26,9 @@ export class TicketService {
 
   validateUserid(id: number){
     return this.http.get(`${this.URL}/validate-user/${id}`)
+  }
+
+  updateTickets(ticket: Ticketmodel){
+    return this.http.put(`${this.URL}/${ticket.id}`, ticket)
   }
 }

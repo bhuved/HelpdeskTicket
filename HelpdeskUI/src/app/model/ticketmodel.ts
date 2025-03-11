@@ -3,6 +3,7 @@ export interface Ticketmodel {
     title:string,
     description:string,
     createdbyUserId : number,
+    resolvedbyUserId : number,
     createdby : string,
     resolvedby : string,
     status : string,

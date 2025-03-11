@@ -11,6 +11,5 @@
 
         public string? Resolution { get; set; }
 
-
     }
 }

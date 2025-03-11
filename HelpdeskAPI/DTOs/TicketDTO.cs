@@ -12,6 +12,8 @@ namespace HelpdeskAPI.DTOs
 
         public int? CreatedbyUserId { get; set; }
 
+        public int? ResolvedbyUserId { get; set; } = null;
+
         public string? Createdby { get; set; }
 
         public string? Resolvedby { get; set; }

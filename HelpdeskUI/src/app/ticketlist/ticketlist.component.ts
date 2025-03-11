@@ -12,6 +12,8 @@ import { Ticketmodel } from '../model/ticketmodel';
 export class TicketlistComponent implements OnInit {
 
   ticketList: Ticketmodel[] = [];
+  FilteredTicketList: Ticketmodel[] = [];
+  checkStatus: string = '';
   constructor(private ticketService:TicketService){
 
   }
@@ -20,7 +22,7 @@ export class TicketlistComponent implements OnInit {
       next: (data: any) => {
         console.log(data);
         this.ticketList = data; 
-             
+        this.FilteredTicketList = this.ticketList;        
       },
       error: (error) => {
         console.error("Error fetching data : ", error);
@@ -29,6 +31,18 @@ export class TicketlistComponent implements OnInit {
         console.log("Data fetching complete");
       }
     });
+  }
+
+  filterTicketsbyStatus(){
+    if (this.checkStatus == "Open")    {
+      this.FilteredTicketList = this.ticketList.filter(t => t.status == "Open");
+    } 
+    else if (this.checkStatus == "Closed") {
+      this.FilteredTicketList = this.ticketList.filter(t => t.status == "Closed");
+    }
+    else if (this.checkStatus == "All") {
+      this.FilteredTicketList = this.ticketList;
+    }
   }
 
 }

@@ -12,7 +12,7 @@ import { BookmarkService } from '../services/bookmark.service';
 })
 export class TicketdetailComponent implements OnInit {
 
-  ticketId: string | null = '';
+  ticketId: number | null =0;
   checkUserId: number = 0;
   message: string = '';
   isValid: boolean = false;
@@ -23,6 +23,7 @@ export class TicketdetailComponent implements OnInit {
     title: '',
     description: '',
     createdbyUserId: 0,
+    resolvedbyUserId: 0,
     createdby: '',
     resolvedby: '',
     status: '',
@@ -36,7 +37,7 @@ export class TicketdetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(
       params => {
-        this.ticketId = params.get("id");
+        this.ticketId = Number(params.get("id"));
       }
     );
     this.ticketService.getTicketdetailsId(this.ticketId).subscribe({
@@ -83,7 +84,7 @@ export class TicketdetailComponent implements OnInit {
   }
 
   checkTicketBookmarked(): void {
-    this.bookmarkService.checkBookmark(Number(this.ticketId), this.checkUserId).subscribe(
+    this.bookmarkService.checkBookmark(this.ticketId, this.checkUserId).subscribe(
       {
         next: (data: any) => {
           console.log(data);
@@ -91,13 +92,13 @@ export class TicketdetailComponent implements OnInit {
           if (this.isBookmarked) {
             const confirmDelete = window.confirm('This ticket is already bookmarked. Do you want to remove it?');
             if (confirmDelete) {
-              this.removeBookmark(Number(this.ticketId),this.checkUserId);
+              this.removeBookmark(this.ticketId, this.checkUserId);
             }
           }
           else {
             const confirmAdd = window.confirm('This ticket has not been bookmarked. Do you want to bookmark it?');
             if (confirmAdd) {
-              this.createBookmark(Number(this.ticketId),this.checkUserId);
+              this.createBookmark(this.ticketId,this.checkUserId);
             }
           }
         },
@@ -110,12 +111,12 @@ export class TicketdetailComponent implements OnInit {
       });
 
   }
-  removeBookmark(ticketId: number, userId: number) : void{
+  removeBookmark(ticketId: number | null, userId: number) : void{
     this.bookmarkService.removeBookmark(ticketId, userId).subscribe({
       next: (data) => {
         console.log(data);
         this.isBookmarked = false;
-        alert('ticket removed successfully');
+        alert('Ticket removed successfully');
       },
       error: (error) => {
         console.error("Error fetching data : ", error);
@@ -126,7 +127,7 @@ export class TicketdetailComponent implements OnInit {
       }
     });
   }
-  createBookmark(ticketId: number, userId: number): void {
+  createBookmark(ticketId: number | null, userId: number): void {
     this.bookmarkService.createBookmark(ticketId, userId).subscribe({
         next: (data: any) => {
         console.log(data);

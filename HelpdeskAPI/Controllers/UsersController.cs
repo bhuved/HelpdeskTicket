@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HelpdeskAPI.Entities;
+using HelpdeskAPI.DTOs;
 
 namespace HelpdeskAPI.Controllers
 {
@@ -76,12 +77,18 @@ namespace HelpdeskAPI.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser(CreateUserDTO user)
         {
-            _context.Users.Add(user);
+            var newUser = new User()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email= user.Email
+            };
+            _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { id = newUser.Id }, newUser);
         }
 
         // DELETE: api/Users/5

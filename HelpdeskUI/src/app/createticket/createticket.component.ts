@@ -32,6 +32,28 @@ export class CreateticketComponent implements OnInit {
       next: (data: any) => {
         console.log(data);
         this.isValid = data;
+        if (this.isValid == false) {
+          this.errorMessage = "UserId not exist."
+        }
+        else {
+          this.errorMessage = '';
+    
+          this.ticketService.createTicket(this.newTicket).subscribe({
+            next: (response) => {
+              console.log('Record added successfully', response);
+              this.resetForm();
+              this.successMessage = "Ticket created successfully"
+            },
+            error: (error) => {
+              console.error('Error adding record', error);
+              this.successMessage='';
+              this.errorMessage = "Error adding record";
+              this.successMessage='';
+            }
+          });
+         
+        } 
+        setTimeout(() => {this.successMessage=''; this.errorMessage='';},3000);
       },
       error: (error) => {
         console.error("Error fetching data : ", error);
@@ -39,30 +61,10 @@ export class CreateticketComponent implements OnInit {
       complete: () => {
         console.log("Data fetching complete");
       }
-    })
-    if (this.isValid == false) {
-      this.errorMessage = "UserId not exist."
-    }
-    else {
-      this.errorMessage = '';
-
-      this.ticketService.createTicket(this.newTicket).subscribe({
-        next: (response) => {
-          console.log('Record added successfully', response);
-          this.resetForm();
-          this.successMessage = "Ticket created successfully"
-        },
-        error: (error) => {
-          console.error('Error adding record', error);
-          this.successMessage='';
-          this.errorMessage = "Error adding record";
-          this.successMessage='';
-        }
-      });
-     
-    } 
-    setTimeout(() => {this.successMessage=''; this.errorMessage='';},3000);
+    });
+    
   }
+
   clearInput() : void{
     this.resetForm();
   }
