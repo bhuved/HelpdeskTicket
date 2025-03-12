@@ -35,7 +35,7 @@ export class CreateuserComponent implements OnInit {
         console.log("Data fetching complete");
       }
     });
-    this.message = `Welcome ${this.user.Firstname} ${this.user.Lastname}, Your account created successfully.`;
+   // this.message = `Welcome ${this.user.Firstname} ${this.user.Lastname}, Your account created successfully.`;
     if (this.user !== null) {
       this.message = `Welcome ${this.user.Firstname} ${this.user.Lastname}, Your account created successfully.`;
     }

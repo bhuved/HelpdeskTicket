@@ -47,3 +47,10 @@
   color: green;
   font-size: 12px;
 }
+p{
+  font-size: 16px;
+  color: white;
+  padding: 5px;
+  text-indent: 5px;
+  background-color: rgb(5, 5, 119);
+}

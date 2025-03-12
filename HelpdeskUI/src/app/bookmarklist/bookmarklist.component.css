@@ -39,4 +39,11 @@
   .ticket-table tr:hover {
     background-color: #f9f9f9;
   }
+  p{
+    font-size: 16px;
+    color: white;
+    padding: 5px;
+    text-indent: 5px;
+    background-color: rgb(5, 5, 119);
+  }
   

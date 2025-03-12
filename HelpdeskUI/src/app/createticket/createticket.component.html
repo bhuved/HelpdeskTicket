@@ -1,4 +1,4 @@
-<p>createticket works!</p>
+<p>Create Ticket</p>
 <div class="maindiv">
 <div class="create-ticket-container">
     <h2>Create New Ticket</h2>
@@ -24,11 +24,11 @@
       </button>
       <button (click)="clearInput()">Cancel</button>
   
-    <div *ngIf="successMessage">
+    <div *ngIf="successMessage" class="successMessage">
       {{ successMessage }}
     </div>
   
-    <div *ngIf="errorMessage">
+    <div *ngIf="errorMessage" class="errorMessage">
       {{ errorMessage }}
     </div>
     </form>

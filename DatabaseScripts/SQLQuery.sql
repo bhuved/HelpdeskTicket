@@ -15,7 +15,7 @@ Status nvarchar(10) not null check(Status in ('Open','Closed')) default 'Open',
 Resolution nvarchar(250),
 Createdtime datetime not null default getdate(),
 Resolvedtime datetime);
-
+select * from ticket
 create table Bookmark
 (Id int identity(1,1) primary key,
 TicketId int foreign key references ticket(id),
@@ -64,4 +64,4 @@ select * from bookmark;
 
 select *, ticket.title,ticket.CreatedbyUserId, Users.Email from bookmark inner join ticket on bookmark.TicketId =Ticket.Id
 inner join Users on bookmark.UserId = Users.Id order by Users.FirstName;
-truncate table Bookmark;
+

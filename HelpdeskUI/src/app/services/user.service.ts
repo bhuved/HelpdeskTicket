@@ -12,4 +12,8 @@ private URL = "https://localhost:7138/api/Users"
   createUser(user: Usermodel){
     return this.http.post(this.URL, user);
   }
+
+  validateUserid(id: number){
+    return this.http.get(`${this.URL}/validate-user/${id}`)
+  }
 }

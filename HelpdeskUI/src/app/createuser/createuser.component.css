@@ -8,30 +8,41 @@
     background-color: #f9f9f9;
   }
   .maindiv{
-    width: 80%;
-    height: 100%;
     padding: 20px;
     padding-bottom:60px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #929189ad;
+    background-color: lightgray;
   }
   
   .form-group {
     margin-bottom: 15px;
     display: flex;
-    align-items: center;
   }
   .label{
+    align-items: center;
     font-weight: bold;
     margin-bottom: 5px;
-    padding-right:10px;
+    padding-right:20px;
+    padding-left:100px;
     width: 15%;
   }
   h2{
     text-align: center;
   }
   button {
+    margin-left: 100px;
     width: 50%;
-    padding-right: 10px;
+  }
+  .message{
+    color: green;
+    text-align: center;
+    font-size: 14px;
+  }
+  p{
+    font-size: 16px;
+    color: white;
+    padding: 5px;
+    text-indent: 5px;
+    background-color: rgb(5, 5, 119);
   }

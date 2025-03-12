@@ -1,5 +1,6 @@
 .create-ticket-container {
     width: 100%;
+    align-items: center;
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -8,7 +9,7 @@
     background-color: #f9f9f9;
   }
   .maindiv{
-    width: 50%;
+    width: 90%;
     height: 100%;
     padding: 80px;
     border: 1px solid #ddd;
@@ -44,4 +45,19 @@
   
   .alert {
     margin-top: 15px;
+  }
+  .error-message {
+    color: red;
+    font-size: 14px;
+  }
+  .success-message {
+    color: green;
+    font-size: 14px;
+  }
+  p{
+    font-size: 16px;
+    color: white;
+    padding: 5px;
+    text-indent: 5px;
+    background-color: rgb(5, 5, 119);
   }
