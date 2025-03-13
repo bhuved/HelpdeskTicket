@@ -41,11 +41,11 @@
 }
 .error-message {
   color: red;
-  font-size: 12px;
+  font-size: 16px;
 }
 .success-message {
   color: green;
-  font-size: 12px;
+  font-size: 16px;
 }
 p{
   font-size: 16px;

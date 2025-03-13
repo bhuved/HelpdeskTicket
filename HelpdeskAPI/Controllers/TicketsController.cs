@@ -46,6 +46,57 @@ namespace HelpdeskAPI.Controllers
             return Ok(tickets);
         }
 
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetSearchTickets(
+            [FromQuery] string? status,
+            [FromQuery] string? createdDateFrom)
+        {
+
+            var query = _context.Tickets
+                .Include(t => t.CreatedbyUser)
+                .Include(t => t.ResolvedbyUser).AsQueryable();
+
+            if (!string.IsNullOrEmpty(status))
+            {
+                query = query.Where(t => t.Status == status);
+            }
+            if(createdDateFrom != null)
+            {
+                query = query.Where(t => t.Createdtime >= DateTime.Parse(createdDateFrom));
+            }
+                var tickets = await query.Select(t => new TicketDTO
+                {
+                    Id = t.Id,
+                    Title = t.Title,
+                    Description = t.Description,
+                    CreatedbyUserId = t.CreatedbyUserId,
+                    Createdby = t.CreatedbyUser.FirstName + t.CreatedbyUser.LastName,
+                    Resolvedby = t.ResolvedbyUser != null ? t.ResolvedbyUser.FirstName + " " + t.ResolvedbyUser.LastName : null,
+                    Status = t.Status,
+                    Resolution = t.Resolution,
+                    Createdtime = t.Createdtime,
+                    Resolvedtime = t.Resolvedtime
+                }).ToListAsync();
+            return Ok(tickets);
+        }
+        [HttpGet("counts")]
+        public async Task<ActionResult<RecordCountDTO>> GetTicketsCounts()
+        {
+            var openCounts = await _context.Tickets.CountAsync(t => t.Status == "Open");
+            var closedCounts = await _context.Tickets.CountAsync(t => t.Status == "Closed");
+            var bookmarkedCounts = await _context.Bookmarks.CountAsync();
+
+            var recordCounts = new RecordCountDTO
+            {
+                OpenTicketCount = openCounts,
+                ClosedTicketCount = closedCounts,
+                BookmarkedTicketCount = bookmarkedCounts
+            };
+
+
+            return Ok(recordCounts);
+        }
+
         // GET: api/Tickets/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Ticket>> GetTicket(int id)
